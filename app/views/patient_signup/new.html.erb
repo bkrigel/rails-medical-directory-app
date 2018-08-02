@@ -1,0 +1,14 @@
+<h1>Ben's Medical Directory</h1>
+<h2>Sign Up as a new Patient</h2><%= form_for(@user , url: session_path) do |f| %>
+  <%= f.label "E-Mail:" %>
+  <%= f.text_field(:email, id: "email") %>
+  <br>
+  <%= f.label "Password:" %>
+  <%= f.password_field(:password, id: "password") %>
+  <br>
+  <%= f.label "Confirm Password:" %>
+  <%= f.password_field(:password_confirmation, id: "password_confirmation") %>
+  <br>
+  <%= f.submit "Sign Up"%>
+  <%= form_tag %>
+<% end %>

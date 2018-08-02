@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_01_200912) do
+ActiveRecord::Schema.define(version: 2018_08_02_134257) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "scheduled_for"
@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 2018_08_01_200912) do
   end
 
   create_table "doctors", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
     t.string "location_city"
@@ -34,8 +32,6 @@ ActiveRecord::Schema.define(version: 2018_08_01_200912) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
     t.string "ailment"
@@ -56,6 +52,16 @@ ActiveRecord::Schema.define(version: 2018_08_01_200912) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "role_type", null: false
+    t.integer "role_id", null: false
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_type", "role_id"], name: "index_users_on_role_type_and_role_id"
   end
 
 end

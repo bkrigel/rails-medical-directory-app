@@ -1,4 +1,5 @@
-<h1>Log In to Ben's Medical Directory</h1>
+<h1>Ben's Medical Directory</h1>
+<h2>Sign Up as a new Doctor</h2>
 <%= form_for(@user , url: session_path) do |f| %>
   <%= f.label "E-Mail:" %>
   <%= f.text_field(:email, id: "email") %>
@@ -6,6 +7,9 @@
   <%= f.label "Password:" %>
   <%= f.password_field(:password, id: "password") %>
   <br>
-  <%= f.submit "Log In"%>
+  <%= f.label "Confirm Password:" %>
+  <%= f.password_field(:password_confirmation, id: "password_confirmation") %>
+  <br>
+  <%= f.submit "Sign Up"%>
   <%= form_tag %>
 <% end %>
