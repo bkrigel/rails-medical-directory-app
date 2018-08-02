@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      if @user.role_type == "Doctor"
+        redirect_to doctor_path(@user)
+      else
+        redirect_to patient_path(@user)
+      end
     else
       redirect_to login_path
     end
