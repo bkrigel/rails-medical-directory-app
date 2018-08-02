@@ -13,7 +13,7 @@ class DoctorSignupController < ApplicationController
       session[:user_id] = user.id
       redirect_to specialties_path
     else
-      redirect_to new_doctor_signup_path
+      redirect_to doctor_signup_path
     end
   end
 end
