@@ -1,6 +1,6 @@
 <h1>Ben's Medical Directory</h1>
 <h2>Sign Up as a new Doctor</h2>
-<%= form_for(@user , url: session_path) do |f| %>
+<%= form_for(@user , url: doctor_signup_path) do |f| %>
   <%= f.label "E-Mail:" %>
   <%= f.text_field(:email, id: "email") %>
   <br>

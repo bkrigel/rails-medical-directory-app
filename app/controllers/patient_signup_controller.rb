@@ -8,7 +8,7 @@ class PatientSignupController < ApplicationController
                     password: params[:user][:password],
                     password_confirmation: params[:user][:password_confirmation]
                   )
-    user.role = Patient.new
+    user.role = Patient.create
     if user.save
       session[:user_id] = user.id
       redirect_to specialties_path
