@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :doctors
   resources :specialties
   root 'static_pages#home'
+  get '/about', to: 'static_pages#about', as: 'about'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create', as: 'session'
   delete '/logout', to: 'sessions#destroy'

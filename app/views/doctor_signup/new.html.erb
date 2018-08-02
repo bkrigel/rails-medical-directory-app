@@ -1,4 +1,4 @@
-<h2>Sign Up as a Doctor</h2>
+<h2>New Doctor Sign-Up</h2>
 <%= form_for(@user , url: doctor_signup_path) do |f| %>
   <%= f.label "E-Mail:" %>
   <%= f.text_field(:email, id: "email") %>
@@ -12,7 +12,3 @@
   <%= f.submit "Sign Up"%>
   <%= form_tag %>
 <% end %>
-
-<p>
-  <%= link_to "Home", root_path %>
-</p>
