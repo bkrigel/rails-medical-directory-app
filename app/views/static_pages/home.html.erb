@@ -1,8 +1,12 @@
-<%= link_to "Sign Up as a New Doctor", doctor_signup_path %>
-<br>
-<%= link_to "Sign Up as a New Patient", patient_signup_path %>
-<p>
-Already have an account?
-<br>
-<%= link_to "Log In", login_path %>
-</p>
+<% if logged_in? %>
+  <h3>Thanks for logging in, User #<%= current_user.id %>!</h3>
+<% else %>
+  <%= link_to "Sign Up as a New Doctor", doctor_signup_path %>
+  <br>
+  <%= link_to "Sign Up as a New Patient", patient_signup_path %>
+  <p>
+    Already have an account?
+    <br>
+    <%= link_to "Log In", login_path %>
+  </p>
+<% end %>

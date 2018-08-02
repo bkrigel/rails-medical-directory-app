@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about', as: 'about'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create', as: 'session'
-  delete '/logout', to: 'sessions#destroy'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
   get '/doctor_signup', to: 'doctor_signup#new', as: 'doctor_signup'
   post '/doctor_signup', to: 'doctor_signup#create'
   get '/patient_signup', to: 'patient_signup#new', as: 'patient_signup'
