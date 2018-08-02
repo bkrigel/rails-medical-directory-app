@@ -98,6 +98,17 @@ patient7 = Patient.create!(first_name: "Amy",
                            ailment: "chicken pox"
                           )
 
+user1 = User.create!(role: doctor1,
+                     email: "skrigel@doctor.com",
+                     password: "doctors",
+                     password_confirmation: "doctors"
+                    )
+user2 = User.create!(role: patient1,
+                     email: "bburr@patient.com",
+                     password: "redhead",
+                     password_confirmation: "redhead"
+                    )
+
 prescription1 = Prescription.create!(drug: "Zoloft",
                                      dosage_in_milligrams: 15,
                                      doctor_id: 1,

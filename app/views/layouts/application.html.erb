@@ -13,20 +13,25 @@
     <h1>Ben's Medical Directory</h1>
     <% if logged_in? %>
       <p>
-        <% if current_user.role == "Doctor" %>
-          Signed-in as: <%= link_to current_user.email, doctor_path(current_user) %>
+        - Signed-in as:
+        <% if current_user.role_type == "Doctor" %>
+          <%= link_to current_user.role.first_name, doctor_path(current_user) %>
         <% else %>
-          Signed-in as: <%= link_to current_user.email, patient_path(current_user) %>
+          <%= link_to current_user.role.first_name, patient_path(current_user) %>
         <% end %>
       </p>
     <% end %>
+    <br>
     <%= yield %>
+  </body>
+  <footer>
     <p>
       ________________________________________________________________
       <br>
       <%= link_to "Home", root_path %> | <%= link_to "About", about_path %><% if logged_in? %>
          | <%= link_to "Log Out", logout_path, method: "delete" %>
       <% end %>
+       | &copy Ben's Medirect 2018
     </p>
-  </body>
+  </footer>
 </html>

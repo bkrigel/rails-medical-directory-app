@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <h3>Thanks for logging in, User #<%= current_user.id %>!</h3>
+  <h3>Thanks for logging in, <%= current_user.role.first_name %>!</h3>
 <% else %>
   <%= link_to "Sign Up as a New Doctor", doctor_signup_path %>
   <br>
