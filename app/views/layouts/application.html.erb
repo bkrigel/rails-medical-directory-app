@@ -12,15 +12,16 @@
   <body>
     <i><h1>Ben's Medical Directory</h1></i>
     <% if logged_in? %>
-      <p>
-        - Signed-in as:
-        <% if current_user.role_type == "Doctor" %>
-          <%= link_to current_user.role.first_name, doctor_path(current_user) %>
-        <% else %>
-          <%= link_to current_user.role.first_name, patient_path(current_user) %>
-        <% end %>
-      </p>
+      - Signed-in as:
+      <% if current_user.role_type == "Doctor" %>
+        <%= link_to current_user.role.first_name, doctor_path(current_user) %>
+      <% else %>
+        <%= link_to current_user.role.first_name, patient_path(current_user) %>
+      <% end %>
+      <br>
     <% end %>
+    ________________________________________________________________
+    <br>
     <br>
     <%= yield %>
   </body>
