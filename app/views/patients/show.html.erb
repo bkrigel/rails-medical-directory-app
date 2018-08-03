@@ -1,10 +1,36 @@
 <h2><%= @patient.full_name %></h2>
-- <%= link_to @patient.specialty.name, specialty_path(@patient.specialty) %>
-<ul>
-  <li>
-    Dr. <%= @patient.last_name %> has been in practice for <%= @patient.years_in_practice %> years
-  </li>
-  <li>
-    Location: <%= @patient.location_city %>
-  </li>
-</ul>
+<h3>Appointments:</h3>
+<% @appointments.each do |appointment| %>
+  <ul>
+    <li>
+      <%= link_to "Dr. #{appointment.doctor.full_name}", doctor_path(appointment.doctor) %>
+    </li>
+    <li>
+      <%= appointment.scheduled_for %>
+    </li>
+    <li>
+      <%= appointment.duration_in_minutes %> min.
+    </li>
+    <li>
+      For: #ailment
+    </li>
+  </ul>
+<% end %>
+
+<h3>Ailment History:</h3>
+<% @ailments.each do |ailment| %>
+  <ul>
+    <li>
+      <%= ailment.description %>
+    </li>
+    <% if ailment.resolved_status == false %>
+      <li>
+        Status: This ailment has persisted for <%= ailment.length_in_days %> days.
+      </li>
+    <% else %>
+      <li>
+        Status: Resolved
+      </li>
+    <% end %>
+  </ul>
+<% end %>

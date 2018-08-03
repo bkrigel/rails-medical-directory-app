@@ -1,9 +1,9 @@
 <% if logged_in? %>
   <h3>Welcome back, <%= current_user.role.first_name %>!</h3>
   <% if current_user.role_type == "Doctor" %>
-    <%= link_to "My Profile", doctor_path(current_user) %>
+    <%= link_to "My Profile", doctor_path(current_user.role) %>
   <% else %>
-    <%= link_to "My Profile", patient_path(current_user) %>
+    <%= link_to "My Profile", patient_path(current_user.role) %>
   <% end %>
   <br>
   <%= link_to "Medical Specialties", specialties_path %>

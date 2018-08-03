@@ -123,6 +123,11 @@ ailment8 = Ailment.create!(description: "anger management issues",
                            length_in_days: 8000,
                            patient_id: 1
                           )
+ailment9 = Ailment.create!(description: "alcoholism",
+                           length_in_days: 10000,
+                           resolved_status: true,
+                           patient_id: 1
+                          )
 
 user1 = User.create!(role: doctor1,
                      email: "skrigel@doctor.com",
@@ -164,7 +169,7 @@ prescription5 = Prescription.create!(drug: "BBQ Ribs",
 appointment1 = Appointment.create!(scheduled_for: DateTime.strptime("09/14/2018 8:00", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 50,
                                    doctor_id: 1,
-                                   patient_id: 2
+                                   patient_id: 1
                                   )
 appointment2 = Appointment.create!(scheduled_for: DateTime.strptime("10/14/2018 9:00", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 50,
