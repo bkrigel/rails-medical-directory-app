@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_02_134257) do
+ActiveRecord::Schema.define(version: 2018_08_03_194914) do
+
+  create_table "ailments", force: :cascade do |t|
+    t.text "description"
+    t.integer "length_in_days"
+    t.boolean "resolved_status", default: false
+    t.integer "patient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "scheduled_for"
@@ -34,7 +43,6 @@ ActiveRecord::Schema.define(version: 2018_08_02_134257) do
   create_table "patients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "ailment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

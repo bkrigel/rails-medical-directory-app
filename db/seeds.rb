@@ -70,32 +70,58 @@ doctor6 = Doctor.create!(first_name: "Brenda",
                         )
 
 patient1 = Patient.create!(first_name: "Bill",
-                           last_name: "Burr",
-                           ailment: "itchy scrotum"
+                           last_name: "Burr"
                           )
 patient2 = Patient.create!(first_name: "Christopher",
-                           last_name: "Rock",
-                           ailment: "the itis"
+                           last_name: "Rock"
                           )
 patient3 = Patient.create!(first_name: "David",
-                           last_name: "Chappelle",
-                           ailment: "social anxiety"
+                           last_name: "Chappelle"
                           )
 patient4 = Patient.create!(first_name: "Jim",
-                           last_name: "Jefferies",
-                           ailment: "narcotics addiction"
+                           last_name: "Jefferies"
                           )
 patient5 = Patient.create!(first_name: "Louis",
-                           last_name: "C.K.",
-                           ailment: "inflamed stomach"
+                           last_name: "C.K."
                           )
 patient6 = Patient.create!(first_name: "Iliza",
-                           last_name: "Schlesinger",
-                           ailment: "either measels or mumps"
+                           last_name: "Schlesinger"
                           )
 patient7 = Patient.create!(first_name: "Amy",
-                           last_name: "Schumer",
-                           ailment: "chicken pox"
+                           last_name: "Schumer"
+                          )
+
+ailment1 = Ailment.create!(description: "itchy scrotum",
+                           length_in_days: 5,
+                           patient_id: 1
+                          )
+ailment2 = Ailment.create!(description: "the itis",
+                           length_in_days: 1,
+                           patient_id: 2
+                          )
+ailment3 = Ailment.create!(description: "social anxiety",
+                           length_in_days: 365,
+                           patient_id: 3
+                          )
+ailment4 = Ailment.create!(description: "narcotics addiction",
+                           length_in_days: 200,
+                           patient_id: 4
+                          )
+ailment5 = Ailment.create!(description: "inflamed stomach",
+                           length_in_days: 8,
+                           patient_id: 5
+                          )
+ailment6 = Ailment.create!(description: "either measels or mumps",
+                           length_in_days: 14,
+                           patient_id: 6
+                          )
+ailment7 = Ailment.create!(description: "chicken pox",
+                           length_in_days: 3,
+                           patient_id: 7
+                          )
+ailment8 = Ailment.create!(description: "anger management issues",
+                           length_in_days: 8000,
+                           patient_id: 1
                           )
 
 user1 = User.create!(role: doctor1,

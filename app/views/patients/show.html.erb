@@ -1,0 +1,10 @@
+<h2><%= @patient.full_name %></h2>
+- <%= link_to @patient.specialty.name, specialty_path(@patient.specialty) %>
+<ul>
+  <li>
+    Dr. <%= @patient.last_name %> has been in practice for <%= @patient.years_in_practice %> years
+  </li>
+  <li>
+    Location: <%= @patient.location_city %>
+  </li>
+</ul>
