@@ -1,1 +1,5 @@
-all the specialties
+<u><h2>Medical Specialties</h2></u>
+<% @specialties.each do |specialty| %>
+    <%= link_to specialty.name, specialty_path(specialty) %>
+    <br>
+<% end %>

@@ -1,5 +1,5 @@
 <h4><%= @doctor.full_name %>, M.D.</h4>
-- <%= @doctor.specialty.name %>
+- <%= link_to @doctor.specialty.name, specialty_path(@doctor.specialty) %>
 <ul>
   <li>
     Dr. <%= @doctor.last_name %> has been in practice for <%= @doctor.years_in_practice %> years
