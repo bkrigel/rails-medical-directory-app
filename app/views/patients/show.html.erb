@@ -1,12 +1,18 @@
 <h2><%= @patient.full_name %></h2>
-<h3>Upcomming Appointments:</h3>
+<br>
+<h3>
+  <% if current_user.role == @patient %>
+    My
+  <% end %>
+  Upcomming Appointments:
+</h3>
 <% @appointments.each do |appointment| %>
   <ul>
     <li>
       <%= link_to "Dr. #{appointment.doctor.full_name}", doctor_path(appointment.doctor) %>
     </li>
     <li>
-      <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %I:%M %P"), edit_appointment_path %>
+      <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %l:%M %P"), edit_appointment_path %>
     </li>
     <li>
       <%= appointment.duration_in_minutes %> min.
@@ -16,8 +22,14 @@
     </li>
   </ul>
 <% end %>
+<br>
 
-<h3>Ailment History:</h3>
+<h3>
+  <% if current_user.role == @patient %>
+    My
+  <% end %>
+  Ailment History:
+</h3>
 <% @ailments.each do |ailment| %>
   <ul>
     <li>
@@ -34,3 +46,18 @@
     <% end %>
   </ul>
 <% end %>
+<br>
+
+<h3>
+  <% if current_user.role == @patient %>
+    My
+  <% end %>
+  Doctors:
+</h3>
+<ul>
+  <% @doctors.each do |doctor| %>
+    <li>
+      <%= link_to "Dr. #{doctor.full_name}", doctor_path(doctor) %>
+    </li>
+  <% end %>
+</ul>

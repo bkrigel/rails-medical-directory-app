@@ -1,12 +1,53 @@
 <h2><%= @doctor.full_name %>, M.D.</h2>
 - <%= link_to @doctor.specialty.name, specialty_path(@doctor.specialty) %>
+<% if current_user.role == @doctor %>
+  <br>
+  <br>
+  <h3>My Public Profile:</h3>
+<% end %>
 <ul>
   <li>
-    Dr. <%= @doctor.last_name %> has been in practice for <%= @doctor.years_in_practice %> years
+    <% if current_user.role == @doctor %>
+      You have
+    <% else %>
+      Dr. <%= @doctor.last_name %> has
+    <% end %>
+    been in practice for <%= @doctor.years_in_practice %> years
   </li>
   <li>
     Location: <%= @doctor.location_city %>
   </li>
 </ul>
+<br>
+<% if current_user.role == @doctor %>
+  <h3>My Upcomming Appointments:</h3>
+  <% @appointments.each do |appointment| %>
+    <ul>
+      <li>
+        <%= link_to appointment.patient.full_name, patient_path(appointment.patient) %>
+      </li>
+      <li>
+        <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %l:%M %P"), edit_appointment_path %>
+      </li>
+      <li>
+        <%= appointment.duration_in_minutes %> min.
+      </li>
+      <li>
+        For: #ailment
+      </li>
+    </ul>
+  <% end %>
+  <br>
+  <h3>My Patients:</h3>
+  <ul>
+    <% @patients.each do |patient| %>
+      <li>
+        <%= link_to patient.full_name, patient_path(patient) %>
+      </li>
+    <% end %>
+  </ul>
+  <br>
+<% end %>
+<%= link_to "All Medical Specialties", specialties_path %>
 <br>
 <%= link_to "All Doctors", doctors_path %>
