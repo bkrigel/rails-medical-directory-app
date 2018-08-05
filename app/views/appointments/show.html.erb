@@ -1,0 +1,31 @@
+<h2>Appointment Details</h2>
+- <%= link_to "Edit This Appointment", edit_appointment_path(@appointment) %>
+<br>
+<ul>
+  <li>
+    <b>Physician:</b> <%= link_to "Dr. #{@doctor.full_name}", doctor_path(@doctor) %>
+  </li>
+  <li>
+    <b>Day:</b> <%= @appointment.scheduled_for.strftime("%A") %>
+  </li>
+  <li>
+    <b>Date:</b> <%= @appointment.scheduled_for.strftime("%b. %d, %Y") %>
+  </li>
+  <li>
+    <b>Time:</b> <%= @appointment.scheduled_for.strftime("%l:%M %P") %>
+  </li>
+  <li>
+    <b>Duration:</b> <%= @appointment.duration_in_minutes %> min.
+  </li>
+  <li>
+    <b>Reason:</b> #ailment
+  </li>
+</ul>
+<br>
+<% if current_user.role_type == "Doctor" %>
+  <%= link_to "Patient Profile", patient_path(@appointment.patient) %>
+  <br>
+  <%= link_to "My Profile", doctor_path(current_user.role) %>
+<% else %>
+  <%= link_to "Go Back to My Profile", patient_path(current_user.role) %>
+<% end %>

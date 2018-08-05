@@ -1,4 +1,10 @@
 <h2><%= @patient.full_name %></h2>
+<% if current_user.role == @patient %>
+  <%= link_to "Schedule New Appointment", new_appointment_path %>
+  <br>
+  <%= link_to "Report New Ailment", new_ailment_path %>
+  <br>
+<% end %>
 <br>
 <h3>
   <% if current_user.role == @patient %>
@@ -12,7 +18,7 @@
       <%= link_to "Dr. #{appointment.doctor.full_name}", doctor_path(appointment.doctor) %>
     </li>
     <li>
-      <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %l:%M %P"), edit_appointment_path %>
+      <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %l:%M %P"), appointment_path(appointment) %>
     </li>
     <li>
       <%= appointment.duration_in_minutes %> min.
@@ -61,3 +67,7 @@
     </li>
   <% end %>
 </ul>
+<br>
+<%= link_to "All Medical Specialties", specialties_path %>
+<br>
+<%= link_to "All Registered Physicians", doctors_path %>
