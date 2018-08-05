@@ -1,12 +1,12 @@
 <h2><%= @patient.full_name %></h2>
-<h3>Appointments:</h3>
+<h3>Upcomming Appointments:</h3>
 <% @appointments.each do |appointment| %>
   <ul>
     <li>
       <%= link_to "Dr. #{appointment.doctor.full_name}", doctor_path(appointment.doctor) %>
     </li>
     <li>
-      <%= appointment.scheduled_for %>
+      <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %I:%M %P"), edit_appointment_path %>
     </li>
     <li>
       <%= appointment.duration_in_minutes %> min.
