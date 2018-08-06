@@ -69,7 +69,7 @@ doctor6 = Doctor.create!(first_name: "Brenda",
                          specialty_id: 21
                         )
 
-patient1 = Patient.create!(first_name: "Bill",
+patient1 = Patient.create!(first_name: "William",
                            last_name: "Burr"
                           )
 patient2 = Patient.create!(first_name: "Christopher",

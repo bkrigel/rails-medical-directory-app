@@ -1,0 +1,13 @@
+<h2>New Prescription</h2>
+<%= form_for @prescription do |f| %>
+  Drug Name: <%= f.text_field(:drug, id: "drug") %>
+  <br>
+  <%= f.label "Dosage:" %>
+  <%= f.text_field(:dosage_in_milligrams, id: "dosage_in_milligrams") %> mg.
+  <br>
+  <%= f.label "Appointment:" %>
+  <%= f.collection_select(:appointment, Appointment.for_current_user(current_user), :patient, :date_and_patient) %>
+  <br>
+  <br>
+  <%= f.submit "Send Prescription" %>
+<% end %>

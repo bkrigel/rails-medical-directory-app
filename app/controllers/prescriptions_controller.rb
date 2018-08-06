@@ -1,5 +1,9 @@
 class PrescriptionsController < ApplicationController
 
+  def new
+    @prescription = Prescription.new
+  end
+
   def show
     @prescription = Prescription.find_by(id: params[:id])
     @appointment = @prescription.appointment
