@@ -14,7 +14,7 @@
     <% if logged_in? %>
       - Account:
       <% if current_user.role_type == "Doctor" %>
-        <%= link_to current_user.email, doctor_path(current_user.role) %>
+        <%= link_to current_user.email, specialty_doctor_path(current_user.role.specialty, current_user.role) %>
       <% else %>
         <%= link_to current_user.email, patient_path(current_user.role) %>
       <% end %>

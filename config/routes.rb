@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :prescriptions
   resources :patients
   resources :appointments
-  resources :doctors
-  resources :specialties
+  resources :specialties do
+    resources :doctors, only: [:new, :create, :edit, :update, :show, :destroy]
+  end
+  get '/doctors_index', to: 'doctors#index', as: 'doctors'
   root 'static_pages#home'
   get '/about', to: 'static_pages#about', as: 'about'
   get '/login', to: 'sessions#new', as: 'login'

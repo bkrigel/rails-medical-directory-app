@@ -15,7 +15,7 @@
 <% @appointments.each do |appointment| %>
   <ul>
     <li>
-      <%= link_to "Dr. #{appointment.doctor.full_name}", doctor_path(appointment.doctor) %>
+      <%= link_to "Dr. #{appointment.doctor.full_name}", specialty_doctor_path(appointment.doctor.specialty, appointment.doctor) %>
     </li>
     <li>
       <%= link_to appointment.scheduled_for.strftime("%A, %b. %-d, %Y @ %l:%M %P"), appointment_path(appointment) %>
@@ -63,7 +63,7 @@
 <ul>
   <% @doctors.each do |doctor| %>
     <li>
-      <%= link_to "Dr. #{doctor.full_name}", doctor_path(doctor) %>
+      <%= link_to "Dr. #{doctor.full_name}", specialty_doctor_path(doctor.specialty, doctor) %>
     </li>
   <% end %>
 </ul>
@@ -87,7 +87,7 @@
       Reason: <%= prescription.appointment.ailment.description %>
     </li>
     <li>
-      Prescribed by <%= link_to "Dr. #{prescription.appointment.doctor.last_name}", doctor_path(prescription.appointment.doctor) %> on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %>
+      Prescribed by <%= link_to "Dr. #{prescription.appointment.doctor.last_name}", specialty_doctor_path(prescription.appointment.doctor.specialty, prescription.appointment.doctor) %> on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %>
     </li>
   </ul>
 <% end %>

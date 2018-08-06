@@ -3,7 +3,7 @@
 <br>
 <ul>
   <li>
-    <b>Physician:</b> <%= link_to "Dr. #{@doctor.full_name}", doctor_path(@doctor) %>
+    <b>Physician:</b> <%= link_to "Dr. #{@doctor.full_name}", specialty_doctor_path(@doctor.specialty, @doctor) %>
   </li>
   <li>
     <b>Patient:</b> <%= link_to @patient.full_name, patient_path(@patient) %>
@@ -28,7 +28,7 @@
 <% if current_user.role_type == "Doctor" %>
   <%= link_to "Patient Profile", patient_path(@appointment.patient) %>
   <br>
-  <%= link_to "My Profile", doctor_path(current_user.role) %>
+  <%= link_to "My Profile", specialty_doctor_path(current_user.role.specialty, current_user.role) %>
 <% else %>
   <%= link_to "Go Back to My Profile", patient_path(current_user.role) %>
 <% end %>
