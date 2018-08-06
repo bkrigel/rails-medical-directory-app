@@ -27,7 +27,7 @@
         <%= link_to appointment.patient.full_name, patient_path(appointment.patient) %>
       </li>
       <li>
-        <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %l:%M %P"), edit_appointment_path %>
+        <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %l:%M %P"), appointment_path(appointment) %>
       </li>
       <li>
         <%= appointment.duration_in_minutes %> min.
