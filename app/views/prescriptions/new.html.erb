@@ -6,7 +6,7 @@
   <%= f.text_field(:dosage_in_milligrams, id: "dosage_in_milligrams") %> mg.
   <br>
   <%= f.label "Appointment:" %>
-  <%= f.collection_select(:appointment, Appointment.for_current_user(current_user), :patient, :date_and_patient) %>
+  <%= f.collection_select(:appointment, Appointment.for_current_user(current_user), :id, :date_and_patient) %>
   <br>
   <br>
   <%= f.submit "Send Prescription" %>
