@@ -92,39 +92,39 @@ patient7 = Patient.create!(first_name: "Amy",
                           )
 
 ailment1 = Ailment.create!(description: "itchy scrotum",
-                           length_in_days: 5,
+                           first_noticed_on: Date.new(2017, 10, 14),
                            patient_id: 1
                           )
 ailment2 = Ailment.create!(description: "the itis",
-                           length_in_days: 1,
+                           first_noticed_on: Date.new(2018, 10, 19),
                            patient_id: 2
                           )
 ailment3 = Ailment.create!(description: "social anxiety",
-                           length_in_days: 365,
+                           first_noticed_on: Date.new(2017, 11, 30),
                            patient_id: 3
                           )
 ailment4 = Ailment.create!(description: "narcotics addiction",
-                           length_in_days: 200,
+                           first_noticed_on: Date.new(2018, 10, 14),
                            patient_id: 4
                           )
 ailment5 = Ailment.create!(description: "inflamed stomach",
-                           length_in_days: 8,
+                           first_noticed_on: Date.new(2018, 6, 2),
                            patient_id: 5
                           )
 ailment6 = Ailment.create!(description: "either measels or mumps",
-                           length_in_days: 14,
+                           first_noticed_on: Date.new(2018, 10, 11),
                            patient_id: 6
                           )
 ailment7 = Ailment.create!(description: "chicken pox",
-                           length_in_days: 3,
+                           first_noticed_on: Date.new(2018, 8, 17),
                            patient_id: 7
                           )
 ailment8 = Ailment.create!(description: "anger management issues",
-                           length_in_days: 8000,
+                           first_noticed_on: Date.new(2009, 9, 9),
                            patient_id: 1
                           )
 ailment9 = Ailment.create!(description: "alcoholism",
-                           length_in_days: 10000,
+                           first_noticed_on: Date.new(1993, 4, 7),
                            resolved_status: true,
                            patient_id: 1
                           )

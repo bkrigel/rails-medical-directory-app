@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_194914) do
 
   create_table "ailments", force: :cascade do |t|
     t.text "description"
-    t.integer "length_in_days"
+    t.date "first_noticed_on"
     t.boolean "resolved_status", default: false
     t.integer "patient_id"
     t.datetime "created_at", null: false
