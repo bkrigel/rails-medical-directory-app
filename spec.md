@@ -11,7 +11,7 @@ Specs:
 - [x] Include signup (how e.g. Devise)
 - [x] Include login (how e.g. Devise)
 - [x] Include logout (how e.g. Devise)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 
