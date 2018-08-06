@@ -140,32 +140,6 @@ user2 = User.create!(role: patient1,
                      password_confirmation: "redhead"
                     )
 
-prescription1 = Prescription.create!(drug: "Zoloft",
-                                     dosage_in_milligrams: 15,
-                                     doctor_id: 1,
-                                     patient_id: 2
-                                    )
-prescription2 = Prescription.create!(drug: "Vyvanse",
-                                     dosage_in_milligrams: 60,
-                                     doctor_id: 2,
-                                     patient_id: 3
-                                    )
-prescription3 = Prescription.create!(drug: "Adderall",
-                                     dosage_in_milligrams: 20,
-                                     doctor_id: 3,
-                                     patient_id: 4
-                                    )
-prescription4 = Prescription.create!(drug: "Antibiotics of some sort",
-                                     dosage_in_milligrams: 200,
-                                     doctor_id: 4,
-                                     patient_id: 5
-                                    )
-prescription5 = Prescription.create!(drug: "BBQ Ribs",
-                                     dosage_in_milligrams: 12,
-                                     doctor_id: 1,
-                                     patient_id: 3
-                                    )
-
 appointment1 = Appointment.create!(scheduled_for: DateTime.strptime("09/14/2018 8:00", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 50,
                                    doctor_id: 1,
@@ -196,3 +170,24 @@ appointment6 = Appointment.create!(scheduled_for: DateTime.strptime("09/23/2018 
                                    doctor_id: 1,
                                    patient_id: 3
                                   )
+
+prescription1 = Prescription.create!(drug: "Zoloft",
+                                     dosage_in_milligrams: 15,
+                                     appointment_id: 1
+                                    )
+prescription2 = Prescription.create!(drug: "Vyvanse",
+                                     dosage_in_milligrams: 60,
+                                     appointment_id: 2
+                                    )
+prescription3 = Prescription.create!(drug: "Adderall",
+                                     dosage_in_milligrams: 20,
+                                     appointment_id: 3
+                                    )
+prescription4 = Prescription.create!(drug: "Antibiotics of some sort",
+                                     dosage_in_milligrams: 200,
+                                     appointment_id: 4
+                                    )
+prescription5 = Prescription.create!(drug: "BBQ Ribs",
+                                     dosage_in_milligrams: 12,
+                                     appointment_id: 1
+                                    )

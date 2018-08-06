@@ -50,8 +50,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_194914) do
   create_table "prescriptions", force: :cascade do |t|
     t.string "drug"
     t.integer "dosage_in_milligrams"
-    t.integer "doctor_id"
-    t.integer "patient_id"
+    t.integer "appointment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
