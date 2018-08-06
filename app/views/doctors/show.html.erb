@@ -17,6 +17,9 @@
   <li>
     Location: <%= @doctor.location_city %>
   </li>
+  <li>
+    Connected with <%= @patients.count %> patients through <i>Ben's Medical Directory</i>
+  </li>
 </ul>
 <br>
 <% if current_user.role == @doctor %>
