@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_08_03_194914) do
     t.integer "duration_in_minutes"
     t.integer "doctor_id"
     t.integer "patient_id"
+    t.integer "ailment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

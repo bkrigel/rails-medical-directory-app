@@ -143,32 +143,38 @@ user2 = User.create!(role: patient1,
 appointment1 = Appointment.create!(scheduled_for: DateTime.strptime("09/14/2018 8:00", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 50,
                                    doctor_id: 1,
-                                   patient_id: 1
+                                   patient_id: 1,
+                                   ailment_id: 9
                                   )
 appointment2 = Appointment.create!(scheduled_for: DateTime.strptime("10/14/2018 9:00", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 50,
                                    doctor_id: 1,
-                                   patient_id: 2
+                                   patient_id: 2,
+                                   ailment_id: 2
                                   )
 appointment3 = Appointment.create!(scheduled_for: DateTime.strptime("07/01/2018 12:00", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 120,
                                    doctor_id: 2,
-                                   patient_id: 3
+                                   patient_id: 3,
+                                   ailment_id: 3
                                   )
 appointment4 = Appointment.create!(scheduled_for: DateTime.strptime("12/25/2018 11:30", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 60,
                                    doctor_id: 3,
-                                   patient_id: 4
+                                   patient_id: 4,
+                                   ailment_id: 4
                                   )
 appointment5 = Appointment.create!(scheduled_for: DateTime.strptime("09/22/2018 7:30", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 120,
                                    doctor_id: 4,
-                                   patient_id: 5
+                                   patient_id: 5,
+                                   ailment_id: 5
                                   )
 appointment6 = Appointment.create!(scheduled_for: DateTime.strptime("09/23/2018 10:00", "%m/%d/%Y %H:%M"),
                                    duration_in_minutes: 60,
                                    doctor_id: 1,
-                                   patient_id: 3
+                                   patient_id: 3,
+                                   ailment_id: 3
                                   )
 
 prescription1 = Prescription.create!(drug: "Zoloft",

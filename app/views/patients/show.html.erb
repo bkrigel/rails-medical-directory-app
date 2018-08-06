@@ -24,7 +24,7 @@
       <%= appointment.duration_in_minutes %> min.
     </li>
     <li>
-      Reason: #ailment
+      Reason: <%= appointment.ailment.description %>
     </li>
   </ul>
 <% end %>

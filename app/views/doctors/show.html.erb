@@ -36,7 +36,7 @@
         <%= appointment.duration_in_minutes %> min.
       </li>
       <li>
-        Reason: #ailment
+        Reason: <%= appointment.ailment.description %>
       </li>
     </ul>
   <% end %>
@@ -64,6 +64,9 @@
       </li>
       <li>
         <%= prescription.dosage_in_milligrams %> mg
+      </li>
+      <li>
+        Reason: <%= prescription.appointment.ailment.description %>
       </li>
       <li>
         Prescribed on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %>
