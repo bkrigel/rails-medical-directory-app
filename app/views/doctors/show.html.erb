@@ -30,7 +30,7 @@
         <%= link_to appointment.patient.full_name, patient_path(appointment.patient) %>
       </li>
       <li>
-        <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %l:%M %P"), appointment_path(appointment) %>
+        <%= link_to appointment.scheduled_for.strftime("%A, %b. %-d, %Y @ %l:%M %P"), appointment_path(appointment) %>
       </li>
       <li>
         <%= appointment.duration_in_minutes %> min.
@@ -49,6 +49,27 @@
       </li>
     <% end %>
   </ul>
+  <br>
+  <h3>
+    My Prescriptions:
+  </h3>
+  <%= link_to "Create New Prescription", new_prescription_path %>
+  <% @prescriptions.each do |prescription| %>
+    <ul>
+      <li>
+        <%= link_to prescription.appointment.patient.full_name, patient_path(prescription.appointment.patient) %>
+      </li>
+      <li>
+        <%= prescription.drug %>
+      </li>
+      <li>
+        <%= prescription.dosage_in_milligrams %> mg
+      </li>
+      <li>
+        Prescribed on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %>
+      </li>
+    </ul>
+  <% end %>
   <br>
 <% end %>
 <%= link_to "All Medical Specialties", specialties_path %>

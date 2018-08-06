@@ -18,7 +18,7 @@
       <%= link_to "Dr. #{appointment.doctor.full_name}", doctor_path(appointment.doctor) %>
     </li>
     <li>
-      <%= link_to appointment.scheduled_for.strftime("%A, %b. %d, %Y @ %l:%M %P"), appointment_path(appointment) %>
+      <%= link_to appointment.scheduled_for.strftime("%A, %b. %-d, %Y @ %l:%M %P"), appointment_path(appointment) %>
     </li>
     <li>
       <%= appointment.duration_in_minutes %> min.
@@ -68,6 +68,28 @@
   <% end %>
 </ul>
 <br>
+
+<h3>
+  <% if current_user.role == @patient %>
+    My
+  <% end %>
+  Prescriptions:
+</h3>
+<% @prescriptions.each do |prescription| %>
+  <ul>
+    <li>
+      <%= prescription.drug %>
+    </li>
+    <li>
+      <%= prescription.dosage_in_milligrams %> mg
+    </li>
+    <li>
+      Prescribed by <%= link_to "Dr. #{prescription.appointment.doctor.last_name}", doctor_path(prescription.appointment.doctor) %> on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %>
+    </li>
+  </ul>
+<% end %>
+<br>
+
 <%= link_to "All Medical Specialties", specialties_path %>
 <br>
 <%= link_to "All Registered Physicians", doctors_path %>

@@ -6,6 +6,9 @@
     <b>Physician:</b> <%= link_to "Dr. #{@doctor.full_name}", doctor_path(@doctor) %>
   </li>
   <li>
+    <b>Patient:</b> <%= link_to @patient.full_name, patient_path(@patient) %>
+  </li>
+  <li>
     <b>Day:</b> <%= @appointment.scheduled_for.strftime("%A") %>
   </li>
   <li>
