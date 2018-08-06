@@ -96,7 +96,7 @@ ailment1 = Ailment.create!(description: "itchy scrotum",
                            patient_id: 1
                           )
 ailment2 = Ailment.create!(description: "the itis",
-                           first_noticed_on: Date.new(2018, 10, 19),
+                           first_noticed_on: Date.new(2018, 7, 19),
                            patient_id: 2
                           )
 ailment3 = Ailment.create!(description: "social anxiety",
@@ -112,7 +112,7 @@ ailment5 = Ailment.create!(description: "inflamed stomach",
                            patient_id: 5
                           )
 ailment6 = Ailment.create!(description: "either measels or mumps",
-                           first_noticed_on: Date.new(2018, 10, 11),
+                           first_noticed_on: Date.new(2018, 7, 11),
                            patient_id: 6
                           )
 ailment7 = Ailment.create!(description: "chicken pox",

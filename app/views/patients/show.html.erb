@@ -43,7 +43,7 @@
     </li>
     <% if ailment.resolved_status == false %>
       <li>
-        Status: This ailment has persisted for <%= (Date.today - ailment.first_noticed_on).to_i %> days.
+        Status: This ailment has persisted for <%= ailment.time_since_first_noticed %>.
       </li>
     <% else %>
       <li>
