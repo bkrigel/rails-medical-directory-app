@@ -34,7 +34,7 @@
   <% if current_user.role == @patient %>
     My
   <% end %>
-  Ailment History:
+  Medical History:
 </h3>
 <% @ailments.each do |ailment| %>
   <ul>
@@ -84,12 +84,15 @@
       <%= prescription.dosage_in_milligrams %> mg
     </li>
     <li>
+      Reason: <%= prescription.appointment.ailment.description %>
+    </li>
+    <li>
       Prescribed by <%= link_to "Dr. #{prescription.appointment.doctor.last_name}", doctor_path(prescription.appointment.doctor) %> on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %>
     </li>
   </ul>
 <% end %>
 <br>
-
+<br>
 <%= link_to "All Medical Specialties", specialties_path %>
 <br>
 <%= link_to "All Registered Physicians", doctors_path %>
