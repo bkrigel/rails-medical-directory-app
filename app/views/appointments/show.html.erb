@@ -24,6 +24,10 @@
     <b>Reason:</b> <%= @appointment.ailment.description %>
   </li>
 </ul>
+<%= form_tag appointment_path(@appointment), method: 'delete' do %>
+  <%= hidden_field_tag "id", @appointment.id %>
+  <%= submit_tag "Cancel Appointment" %>
+<% end %>
 <br>
 <% if current_user.role_type == "Doctor" %>
   <%= link_to "Patient Profile", patient_path(@appointment.patient) %>
