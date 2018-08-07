@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <i><h1>Ben's Medical Directory</h1></i>
+    <i><h1>Benjamin's Medical Directory</h1></i>
     <% if logged_in? %>
       - Account:
       <% if current_user.role_type == "Doctor" %>
@@ -18,10 +18,10 @@
       <% else %>
         <%= link_to current_user.email, patient_path(current_user.role) %>
       <% end %>
-      (<%= link_to "edit", patient_edit_path(current_user) %>)
+      <small>(<%= link_to "edit", patient_edit_path(current_user) %>)</small>
       <br>
     <% end %>
-    ________________________________________________________________
+    ________________________________________________________________________
     <br>
     <br>
     <%= yield %>
@@ -29,12 +29,12 @@
   <footer>
     <p>
       <br>
-      _____________________________________________________________________________
+      ________________________________________________________________________
       <br>
-      <%= link_to "Home", root_path %> | <%= link_to "About", about_path %><% if logged_in? %>
+      <small><%= link_to "Home", root_path %> | <%= link_to "About", about_path %><% if logged_in? %>
          | <%= link_to "Log Out", logout_path, method: "delete" %>
       <% end %>
-       | &copy Ben's Medirect 2018
+       | &copy Benjamin's Medical Directory 2018</small>
     </p>
   </footer>
 </html>
