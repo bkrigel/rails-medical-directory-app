@@ -70,7 +70,7 @@
       <% end %>
     <% else %>
       <li>
-        <small><i>Status:</i></small> Resolved <small><i>- We're glad you're feeling better!</i></small> 
+        <small><i>Status:</i></small> Resolved <small><i>- We're glad you're feeling better!</i></small>
       </li>
       <% if current_user.role == @patient %>
         <%= form_tag '/unresolve_ailment', method: 'post' do %>
