@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   get '/doctor_signup', to: 'doctor_signup#new', as: 'doctor_signup'
   post '/doctor_signup', to: 'doctor_signup#create'
+  get '/doctor_edit', to: 'doctor_signup#edit', as: 'doctor_edit'
+  patch '/doctor_edit', to: 'doctor_signup#update'
   get '/patient_signup', to: 'patient_signup#new', as: 'patient_signup'
   post '/patient_signup', to: 'patient_signup#create'
   get '/patient_edit', to: 'patient_signup#edit', as: 'patient_edit'

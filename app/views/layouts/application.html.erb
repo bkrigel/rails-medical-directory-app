@@ -14,11 +14,10 @@
     <% if logged_in? %>
       - Account:
       <% if current_user.role_type == "Doctor" %>
-        <%= link_to current_user.email, specialty_doctor_path(current_user.role.specialty, current_user.role) %>
+        <%= link_to current_user.email, specialty_doctor_path(current_user.role.specialty, current_user.role) %> <small>(<%= link_to "edit", doctor_edit_path(current_user) %>)</small>
       <% else %>
-        <%= link_to current_user.email, patient_path(current_user.role) %>
+        <%= link_to current_user.email, patient_path(current_user.role) %> <small>(<%= link_to "edit", patient_edit_path(current_user) %>)</small>
       <% end %>
-      <small>(<%= link_to "edit", patient_edit_path(current_user) %>)</small>
       <br>
     <% end %>
     ________________________________________________________________________
