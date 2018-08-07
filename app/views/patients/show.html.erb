@@ -1,8 +1,8 @@
 <h2><%= @patient.full_name %></h2>
 <% if current_user.role == @patient %>
-  <%= link_to "Schedule New Appointment", new_appointment_path %>
-  <br>
   <%= link_to "Report New Ailment", new_ailment_path %>
+  <br>
+  <%= link_to "Schedule New Appointment", new_appointment_path %>
   <br>
 <% end %>
 <br>
@@ -10,7 +10,7 @@
   <% if current_user.role == @patient %>
     My
   <% end %>
-  Upcomming Appointments:
+  Upcoming Appointments:
 </h3>
 <% @appointments.each do |appointment| %>
   <ul>
@@ -44,6 +44,10 @@
     <% if ailment.resolved_status == false %>
       <li>
         Status: This ailment has persisted for <%= ailment.time_since_first_noticed %>.
+        <!-- form_for with hidden field to mark resolved_status as true -->
+        <%= form_tag '/' %>
+        form tag '/#{ailment.id}/change_ailment' do
+        f.submit "mark resolved"
       </li>
     <% else %>
       <li>
