@@ -30,6 +30,11 @@
 <br>
 <% if current_user.role == @doctor %>
   <h3>My Upcoming Appointments:</h3>
+  <% if @appointments.empty? %>
+    <small><i>You have no scheduled appointments.</i></small>
+    <br>
+    <br>
+  <% end %>
   <% @appointments.each do |appointment| %>
     <ul>
       <li>
@@ -52,6 +57,11 @@
   <% end %>
   <br>
   <h3>My Patients:</h3>
+  <% if @patients.empty? %>
+    <small><i>You have no patients.</i></small>
+    <br>
+    <br>
+  <% end %>
   <ul>
     <% @patients.each do |patient| %>
       <li>
@@ -63,7 +73,17 @@
   <h3>
     My Prescriptions:
   </h3>
-  <%= link_to "Create New Prescription", new_prescription_path %>
+  <% if @prescriptions.empty? && @appointments.empty? %>
+    <small><i>You have no prescriptions.</i></small>
+    <br>
+    <br>
+  <% elsif @prescriptions.empty? && !@appointments.empty? %>
+    <small><i>You have no prescriptions. Click <%= link_to "here", new_prescription_path %> to create a new prescription.</i></small>
+    <br>
+    <br>
+  <% else %>
+    <%= link_to "Create New Prescription", new_prescription_path %>
+  <% end %>
   <% @prescriptions.each do |prescription| %>
     <ul>
       <li>
