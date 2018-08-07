@@ -34,6 +34,15 @@
     <% end %>
   </ul>
 <% end %>
+<% if @ailments.empty? %>
+  <small><i>You have not reported any ailments. Click <%= link_to "here", new_ailment_path %> to report a new ailment before scheduling an appointment.</i></small>
+  <br>
+  <br>
+<% elsif @appointments.empty? %>
+  <small><i>You have no scheduled appointments. Click <%= link_to "here", new_appointment_path %> to schedule a new appointment.</i></small>
+  <br>
+  <br>
+<% end %>
 <br>
 
 <h3>
@@ -68,7 +77,18 @@
         <% end %>
       <% end %>
     <% end %>
+    <% if current_user.role == @patient %>
+      <%= form_tag ailment_path(ailment), method: 'delete' do %>
+        <%= hidden_field_tag "id", ailment.id %>
+        <%= submit_tag "Remove" %>
+      <% end %>
+    <% end %>
   </ul>
+<% end %>
+<% if @ailments.empty? %>
+  <small><i>You have not reported any ailments. Click <%= link_to "here", new_ailment_path %> to report a new ailment.</i></small>
+  <br>
+  <br>
 <% end %>
 <br>
 
@@ -106,7 +126,16 @@
     </li>
     <li>
       Prescribed by <%= link_to "Dr. #{prescription.appointment.doctor.last_name}", specialty_doctor_path(prescription.appointment.doctor.specialty, prescription.appointment.doctor) %> on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %>
-    </li>
+      <% if current_user.role == prescription.appointment.doctor %>
+        (<%= link_to "edit", edit_prescription_path(prescription) %>)
+        </li>
+         <%= form_tag prescription_path(prescription), method: 'delete' do %>
+           <%= hidden_field_tag "id", prescription.id %>
+           <%= submit_tag "Cancel Prescription" %>
+         <% end %>
+      <% else %>
+        </li>
+      <% end %>
   </ul>
 <% end %>
 <br>
