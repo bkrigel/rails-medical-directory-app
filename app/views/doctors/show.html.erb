@@ -1,5 +1,5 @@
 <h2><%= @doctor.full_name %>, M.D.</h2>
-- <%= link_to @doctor.specialty.name, specialty_path(@doctor.specialty) %>
+- <i><%= link_to @doctor.specialty.name, specialty_path(@doctor.specialty) %></i>
 <% if current_user.role == @doctor %>
   <br>
   <br>
@@ -21,6 +21,12 @@
     Connected with <%= @patients.count %> patients through <i>Ben's Medical Directory</i>
   </li>
 </ul>
+<% if current_user.role_type == "Patient" %>
+  <br>
+  <%= link_to "Schedule New Appointment", new_appointment_path %>
+  <br>
+  <br>
+<% end %>
 <br>
 <% if current_user.role == @doctor %>
   <h3>My Upcomming Appointments:</h3>
