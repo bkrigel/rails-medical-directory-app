@@ -18,6 +18,7 @@
       <% else %>
         <%= link_to current_user.email, patient_path(current_user.role) %>
       <% end %>
+      (<%= link_to "edit", patient_edit_path(current_user) %>)
       <br>
     <% end %>
     ________________________________________________________________
