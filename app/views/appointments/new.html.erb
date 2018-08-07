@@ -4,7 +4,10 @@
   <%= f.collection_select(:doctor, Doctor.all, :id, :doctor_with_specialty_and_location) %>
   <br>
   <br>
-  Date/Time: <%= f.datetime_select(:scheduled_for, id: "scheduled_for_date", ampm: true, minute_step: 15) %>
+  Date: <%= f.date_field(:scheduled_for, id: "scheduled_for_date") %>
+  <br>
+  <br>
+  Time: <%= f.time_select(:scheduled_for, id: "scheduled_for_time", ampm: true, minute_step: 15) %>
   <br>
   <br>
   <%= f.label "Duration:" %>
@@ -17,4 +20,3 @@
   <br>
   <%= f.submit "Schedule Appointment" %>
 <% end %>
-<!-- #dr_id ail_id -->
