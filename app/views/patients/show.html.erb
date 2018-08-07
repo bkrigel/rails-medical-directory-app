@@ -26,6 +26,10 @@
     <li>
       Reason: <%= appointment.ailment.description %>
     </li>
+    <%= form_tag appointment_path(appointment), method: 'delete' do %>
+      <%= hidden_field_tag "id", appointment.id %>
+      <%= submit_tag "Cancel Appointment" %>
+    <% end %>
   </ul>
 <% end %>
 <br>

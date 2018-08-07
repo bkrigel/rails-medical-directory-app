@@ -19,6 +19,15 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def show
+    @appointment = Appointment.find_by(id: params[:id])
+    @doctor = @appointment.doctor
+    @patient = @appointment.patient
+    unless current_user.role == @appointment.patient || current_user.role == @appointment.doctor
+      redirect_to root_path
+    end
+  end
+
   def edit
     @appointment = Appointment.find_by(id: params[:id])
   end
@@ -38,12 +47,13 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def show
+  def destroy
     @appointment = Appointment.find_by(id: params[:id])
-    @doctor = @appointment.doctor
-    @patient = @appointment.patient
-    unless current_user.role == @appointment.patient || current_user.role == @appointment.doctor
-      redirect_to root_path
+    @appointment.destroy
+    if current_user.role_type == "Doctor"
+      redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
+    else
+      redirect_to patient_path(current_user.role)
     end
   end
 
