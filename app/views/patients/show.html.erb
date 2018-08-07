@@ -26,9 +26,11 @@
     <li>
       Reason: <%= appointment.ailment.description %>
     </li>
-    <%= form_tag appointment_path(appointment), method: 'delete' do %>
-      <%= hidden_field_tag "id", appointment.id %>
-      <%= submit_tag "Cancel Appointment" %>
+    <% if current_user.role == @patient || current_user.role == appointment.doctor %>
+      <%= form_tag appointment_path(appointment), method: 'delete' do %>
+        <%= hidden_field_tag "id", appointment.id %>
+        <%= submit_tag "Cancel Appointment" %>
+      <% end %>
     <% end %>
   </ul>
 <% end %>
@@ -48,19 +50,23 @@
     <% if ailment.resolved_status == false %>
       <li>
         Status: This ailment has persisted for <%= ailment.time_since_first_noticed %>.
+      </li>
+      <% if current_user.role == @patient %>
         <%= form_tag '/resolve_ailment', method: 'post' do %>
           <%= hidden_field_tag "id", ailment.id %>
           <%= submit_tag "Mark Resolved" %>
         <% end %>
-      </li>
+      <% end %>
     <% else %>
       <li>
         Status: Resolved
+      </li>
+      <% if current_user.role == @patient %>
         <%= form_tag '/unresolve_ailment', method: 'post' do %>
           <%= hidden_field_tag "id", ailment.id %>
           <%= submit_tag "Mark Unresolved" %>
         <% end %>
-      </li>
+      <% end %>
     <% end %>
   </ul>
 <% end %>
