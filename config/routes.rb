@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   post '/patient_signup', to: 'patient_signup#create'
   get '/patient_edit', to: 'patient_signup#edit', as: 'patient_edit'
   patch '/patient_edit', to: 'patient_signup#update'
+  post '/resolve_ailment', to: 'ailments#resolve_ailment'
+  post '/unresolve_ailment', to: 'ailments#unresolve_ailment'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

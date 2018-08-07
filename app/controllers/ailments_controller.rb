@@ -15,14 +15,18 @@ class AilmentsController < ApplicationController
     end
   end
 
-  def edit
-    @ailment = Ailment.find_by(id: params[:id])
-  end
-
   def resolve_ailment
     @ailment = Ailment.find_by(id: params[:id])
     @ailment.resolved_status = true
-    redirect_to idk
+    @ailment.save
+    redirect_to patient_path(@ailment.patient)
+  end
+
+  def unresolve_ailment
+    @ailment = Ailment.find_by(id: params[:id])
+    @ailment.resolved_status = false
+    @ailment.save
+    redirect_to patient_path(@ailment.patient)
   end
 
   private

@@ -44,14 +44,18 @@
     <% if ailment.resolved_status == false %>
       <li>
         Status: This ailment has persisted for <%= ailment.time_since_first_noticed %>.
-        <!-- form_for with hidden field to mark resolved_status as true -->
-        <%= form_tag '/' %>
-        form tag '/#{ailment.id}/change_ailment' do
-        f.submit "mark resolved"
+        <%= form_tag '/resolve_ailment', method: 'post' do %>
+          <%= hidden_field_tag "id", ailment.id %>
+          <%= submit_tag "Mark Resolved" %>
+        <% end %>
       </li>
     <% else %>
       <li>
         Status: Resolved
+        <%= form_tag '/unresolve_ailment', method: 'post' do %>
+          <%= hidden_field_tag "id", ailment.id %>
+          <%= submit_tag "Mark Unresolved" %>
+        <% end %>
       </li>
     <% end %>
   </ul>
