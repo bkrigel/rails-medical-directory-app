@@ -41,3 +41,7 @@ h3 {
 a {
  color: #0099ff;
 }
+
+small :not(footer):not(a) {
+  color: #4d4d4d;
+}

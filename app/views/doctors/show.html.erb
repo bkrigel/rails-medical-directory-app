@@ -15,7 +15,7 @@
     been in practice for <%= @doctor.years_in_practice %> years
   </li>
   <li>
-    Location: <%= @doctor.location_city %>
+    Located in <%= @doctor.location_city %>
   </li>
   <li>
     Connected with <%= @patients.count %> patients through <i>Ben's Medical Directory</i>
@@ -33,16 +33,16 @@
   <% @appointments.each do |appointment| %>
     <ul>
       <li>
-        <%= link_to appointment.patient.full_name, patient_path(appointment.patient) %>
+        <small><i>Patient:</i></small> <%= link_to appointment.patient.full_name, patient_path(appointment.patient) %>
       </li>
       <li>
-        <%= link_to appointment.scheduled_for.strftime("%A, %b. %-d, %Y @ %l:%M %P"), appointment_path(appointment) %>
+        <small><i>Date/Time:</i></small> <%= link_to appointment.scheduled_for.strftime("%A, %b. %-d, %Y @ %l:%M %P"), appointment_path(appointment) %>
       </li>
       <li>
-        <%= appointment.duration_in_minutes %> min.
+        <small><i>Duration:</i></small> <%= appointment.duration_in_minutes %> min.
       </li>
       <li>
-        Reason: <%= appointment.ailment.description %>
+        <small><i>Reason:</i></small> <%= appointment.ailment.description %>
       </li>
       <%= form_tag appointment_path(appointment), method: 'delete' do %>
         <%= hidden_field_tag "id", appointment.id %>
@@ -67,19 +67,19 @@
   <% @prescriptions.each do |prescription| %>
     <ul>
       <li>
-        <%= link_to prescription.appointment.patient.full_name, patient_path(prescription.appointment.patient) %>
+        <small><i>Patient:</i></small> <%= link_to prescription.appointment.patient.full_name, patient_path(prescription.appointment.patient) %>
       </li>
       <li>
-        <%= prescription.drug %>
+        <small><i>Drug:</i></small> <%= prescription.drug %>
       </li>
       <li>
-        <%= prescription.dosage_in_milligrams %> mg
+        <small><i>Dosage:</i></small> <%= prescription.dosage_in_milligrams %> mg
       </li>
       <li>
-        Reason: <%= prescription.appointment.ailment.description %>
+        <small><i>Reason:</i></small> <%= prescription.appointment.ailment.description %>
       </li>
       <li>
-        Prescribed on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %> (<%= link_to "edit", edit_prescription_path(prescription) %>)
+        <small><i>Appointment Date:</i></small> <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %> <small>(<%= link_to "edit", edit_prescription_path(prescription) %>)</small>
       </li>
       <%= form_tag prescription_path(prescription), method: 'delete' do %>
         <%= hidden_field_tag "id", prescription.id %>
