@@ -79,8 +79,12 @@
         Reason: <%= prescription.appointment.ailment.description %>
       </li>
       <li>
-        Prescribed on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %>
+        Prescribed on <%= link_to prescription.appointment.scheduled_for.strftime("%b. %-d, %Y"), appointment_path(prescription.appointment) %> (<%= link_to "edit", edit_prescription_path(prescription) %>)
       </li>
+      <%= form_tag prescription_path(prescription), method: 'delete' do %>
+        <%= hidden_field_tag "id", prescription.id %>
+        <%= submit_tag "Cancel Prescription" %>
+      <% end %>
     </ul>
   <% end %>
   <br>

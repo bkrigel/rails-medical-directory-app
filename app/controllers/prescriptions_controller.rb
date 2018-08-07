@@ -28,4 +28,27 @@ class PrescriptionsController < ApplicationController
     end
   end
 
+  def edit
+    @prescription = Prescription.find_by(id: params[:id])
+  end
+
+  def update
+    @prescription = Prescription.find_by(id: params[:id])
+    if @prescription.update(
+      drug: params[:prescription][:drug],
+      dosage_in_milligrams: params[:prescription][:dosage_in_milligrams],
+      appointment_id: params[:prescription][:appointment]
+    )
+      redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
+    else
+      redirect_to edit_prescription_path(@prescription)
+    end
+  end
+
+  def destroy
+    @prescription = Prescription.find_by(id: params[:id])
+    @prescription.destroy
+    redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
+  end
+
 end
