@@ -1,0 +1,20 @@
+<h2>Schedule New Appointment</h2>
+<%= form_for @appointment do |f| %>
+  <%= f.label "Physician:" %>
+  <%= f.collection_select(:doctor, Doctor.all, :id, :doctor_with_specialty_and_location) %>
+  <br>
+  <br>
+  Date/Time: <%= f.datetime_select(:scheduled_for, id: "scheduled_for_date", ampm: true, minute_step: 15) %>
+  <br>
+  <br>
+  <%= f.label "Duration:" %>
+  <%= f.number_field(:duration_in_minutes, id: "duration_in_minutes", step: 10, min: 30, max: 120) %> minutes
+  <br>
+  <br>
+  Primary Reason: <%= f.collection_select(:ailment, Ailment.for_current_user(current_user), :id, :description) %>
+  <br>
+  <br>
+  <br>
+  <%= f.submit "Schedule Appointment" %>
+<% end %>
+<!-- #dr_id ail_id -->
