@@ -2,7 +2,11 @@
 
 class AppointmentsController < ApplicationController
   def new
-    @appointment = Appointment.new
+    if current_user.role_type == "Patient"
+      @appointment = Appointment.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -30,6 +34,9 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find_by(id: params[:id])
+    unless current_user.role == @appointment.patient
+      redirect_to root_path
+    end
     if @appointment.update(appointment_params)
       redirect_to patient_path(@appointment.patient)
     else

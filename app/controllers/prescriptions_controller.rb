@@ -2,6 +2,9 @@
 
 class PrescriptionsController < ApplicationController
   def new
+    unless current_user.role_type == "Doctor"
+      redirect_to root_path
+    end
     @prescription = Prescription.new
   end
 
@@ -21,6 +24,9 @@ class PrescriptionsController < ApplicationController
 
   def update
     @prescription = Prescription.find_by(id: params[:id])
+    unless current_user.role == @prescription.doctor
+      redirect_to root_path
+    end
     if @prescription.update(prescription_params)
       redirect_to specialty_doctor_path(current_user.role.specialty,
                                         current_user.role)

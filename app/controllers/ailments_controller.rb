@@ -2,7 +2,11 @@
 
 class AilmentsController < ApplicationController
   def new
-    @ailment = Ailment.new
+    if current_user.role_type == "Patient"
+      @ailment = Ailment.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
