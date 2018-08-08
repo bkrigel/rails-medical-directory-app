@@ -18,7 +18,8 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find_by(id: params[:id])
     @doctor = @appointment.doctor
     @patient = @appointment.patient
-    unless current_user.role == @appointment.patient || current_user.role == @appointment.doctor
+    unless current_user.role == @appointment.patient ||
+           current_user.role == @appointment.doctor
       redirect_to root_path
     end
   end
@@ -40,7 +41,8 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.find_by(id: params[:id])
     appointment.destroy
     if current_user.role_type == "Doctor"
-      redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
+      redirect_to specialty_doctor_path(current_user.role.specialty,
+                                        current_user.role)
     else
       redirect_to patient_path(current_user.role)
     end
@@ -54,10 +56,10 @@ private
       :doctor_id,
       :ailment_id
     )
-    .merge(
-      scheduled_for: scheduled_for,
-      patient_id: current_user.role.id
-    )
+          .merge(
+            scheduled_for: scheduled_for,
+            patient_id: current_user.role.id
+          )
   end
 
   def scheduled_for

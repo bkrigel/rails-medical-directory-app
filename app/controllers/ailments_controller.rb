@@ -41,8 +41,8 @@ private
       :first_noticed_on,
       :description
     )
-    .merge(
-      patient_id: current_user.role.id
-    )
+          .merge(
+            patient_id: current_user.role.id
+          )
   end
 end

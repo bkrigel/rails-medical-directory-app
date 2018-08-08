@@ -17,6 +17,7 @@ class Appointment < ApplicationRecord
   end
 
   def date_and_patient
-    "#{scheduled_for.strftime('%A, %b. %-d, %Y @ %l:%M %P')} (#{patient.full_name})"
+    "#{scheduled_for.strftime('%A, %b. %-d, %Y @ %l:%M %P')}\
+    (#{patient.full_name})"
   end
 end
