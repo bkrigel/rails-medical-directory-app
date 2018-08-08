@@ -4,6 +4,9 @@ class Appointment < ApplicationRecord
   belongs_to :doctor
   belongs_to :patient
   belongs_to :ailment
+  validates :duration_in_minutes, presence: true
+  validates :duration_in_minutes, numericality: true
+
   has_many :prescriptions
 
   def self.for_current_user(current_user)
