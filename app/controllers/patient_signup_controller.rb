@@ -11,7 +11,7 @@ class PatientSignupController < ApplicationController
       first_name: params[:user][:role_attributes][:first_name],
       last_name: params[:user][:role_attributes][:last_name]
     )
-    if @user.save && @user.role.save
+    if @user.role.save && @user.save
       session[:user_id] = @user.id
       redirect_to root_path
     else
