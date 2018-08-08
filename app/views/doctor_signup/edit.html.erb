@@ -2,7 +2,7 @@
 <%= form_for(@user , url: doctor_edit_path) do |f| %>
   <%= f.fields_for(:role, @user.role) do |ff| %>
     <%= ff.label "Specialty:" %>
-    <%= ff.collection_select(:specialty, Specialty.all, :id, :name) %>
+    <%= ff.collection_select(:specialty_id, Specialty.all, :id, :name) %>
     <br>
     <br>
     Location City, State: <%= ff.text_field :location_city %>

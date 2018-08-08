@@ -7,7 +7,6 @@ class AilmentsController < ApplicationController
   def create
     ailment = Ailment.new(ailment_params)
     ailment.patient = current_user.role
-
     if ailment.save
       redirect_to patient_path(ailment.patient)
     else
