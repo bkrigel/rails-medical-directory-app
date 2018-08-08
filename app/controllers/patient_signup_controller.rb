@@ -22,8 +22,8 @@ class PatientSignupController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: current_user.id)
-    if @user.update(user_params) && @user.role.update(
+    user = User.find_by(id: current_user.id)
+    if user.update(user_params) && user.role.update(
       first_name: params[:user][:role_attributes][:first_name],
       last_name: params[:user][:role_attributes][:last_name]
     )

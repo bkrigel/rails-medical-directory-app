@@ -15,23 +15,23 @@ class AilmentsController < ApplicationController
   end
 
   def destroy
-    @ailment = Ailment.find_by(id: params[:id])
-    @ailment.destroy
-    redirect_to patient_path(@ailment.patient)
+    ailment = Ailment.find_by(id: params[:id])
+    ailment.destroy
+    redirect_to patient_path(ailment.patient)
   end
 
   def resolve_ailment
-    @ailment = Ailment.find_by(id: params[:id])
-    @ailment.resolved_status = true
-    @ailment.save
-    redirect_to patient_path(@ailment.patient)
+    ailment = Ailment.find_by(id: params[:id])
+    ailment.resolved_status = true
+    ailment.save
+    redirect_to patient_path(ailment.patient)
   end
 
   def unresolve_ailment
-    @ailment = Ailment.find_by(id: params[:id])
-    @ailment.resolved_status = false
-    @ailment.save
-    redirect_to patient_path(@ailment.patient)
+    ailment = Ailment.find_by(id: params[:id])
+    ailment.resolved_status = false
+    ailment.save
+    redirect_to patient_path(ailment.patient)
   end
 
   private

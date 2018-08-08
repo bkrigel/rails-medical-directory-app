@@ -41,8 +41,8 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment = Appointment.find_by(id: params[:id])
-    @appointment.destroy
+    appointment = Appointment.find_by(id: params[:id])
+    appointment.destroy
     if current_user.role_type == "Doctor"
       redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
     else

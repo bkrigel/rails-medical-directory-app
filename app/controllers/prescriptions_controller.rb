@@ -31,16 +31,18 @@ class PrescriptionsController < ApplicationController
   def update
     prescription = Prescription.find_by(id: params[:id])
     if prescription.update(prescription_params)
-      redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
+      redirect_to specialty_doctor_path(current_user.role.specialty,
+                                        current_user.role)
     else
       redirect_to edit_prescription_path(prescription)
     end
   end
 
   def destroy
-    @prescription = Prescription.find_by(id: params[:id])
-    @prescription.destroy
-    redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
+    prescription = Prescription.find_by(id: params[:id])
+    prescription.destroy
+    redirect_to specialty_doctor_path(current_user.role.specialty,
+                                      current_user.role)
   end
 
   private
