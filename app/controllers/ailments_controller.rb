@@ -8,9 +8,11 @@ class AilmentsController < ApplicationController
   def create
     ailment = Ailment.new(ailment_params)
     ailment.patient = current_user.role
-    if ailment.save
+    if ailment.valid?
+      ailment.save
       redirect_to patient_path(ailment.patient)
     else
+      flash[:alert] = "We're sorry you're not feeling well. Please let us know when you first noticed the ailment and include a brief description below."
       redirect_to new_ailment_path
     end
   end

@@ -7,7 +7,8 @@ class PrescriptionsController < ApplicationController
 
   def create
     prescription = Prescription.new(prescription_params)
-    if prescription.save
+    if prescription.valid?
+      prescription.save
       redirect_to specialty_doctor_path(prescription.appointment.doctor.specialty,
                                         prescription.appointment.doctor)
     else

@@ -9,7 +9,8 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.new(appointment_params)
     appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]['scheduled_for(4i)']}:#{params[:appointment]['scheduled_for(5i)']}", "%Y-%m-%d %H:%M")
     appointment.patient_id = current_user.role.id
-    if appointment.save
+    if appointment.valid?
+      appointment.save
       redirect_to patient_path(appointment.patient)
     else
       redirect_to new_appointment_path
@@ -34,7 +35,8 @@ class AppointmentsController < ApplicationController
     appointment.update(appointment_params)
     appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]['scheduled_for(4i)']}:#{params[:appointment]['scheduled_for(5i)']}", "%Y-%m-%d %H:%M")
     appointment.patient_id = current_user.role.id
-    if appointment.save
+    if appointment.valid?
+      appointment.save
       redirect_to patient_path(appointment.patient)
     else
       redirect_to edit_appointment_path(appointment)

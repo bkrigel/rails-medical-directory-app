@@ -3,6 +3,8 @@
 class Ailment < ApplicationRecord
   belongs_to :patient
   has_many :appointments
+  validates :description, presence: true
+  validates :first_noticed_on, presence: true
 
   def self.unresolved_for_current_user(current_user)
     all.select do |ailment|

@@ -18,8 +18,8 @@ Specs:
 Confirm:
 - [ ] The application is pretty DRY
 - [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
 - [ ] Conforms to Nitro Ruby linting rules
 
 If you've added any Bonus functionality to your application, please describe it below:
