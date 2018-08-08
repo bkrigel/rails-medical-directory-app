@@ -4,11 +4,7 @@ class PatientSignupController < ApplicationController
   end
 
   def create
-    user = User.new(
-      email: params[:user][:email],
-      password: params[:user][:password],
-      password_confirmation: params[:user][:password_confirmation]
-    )
+    user = User.new(user_params)
     user.role = Patient.new(
       first_name: params[:user][:role_attributes][:first_name],
       last_name: params[:user][:role_attributes][:last_name]
@@ -27,18 +23,24 @@ class PatientSignupController < ApplicationController
 
   def update
     @user = User.find_by(id: current_user.id)
-    if @user.update(
-        email: params[:user][:email],
-        password: params[:user][:password],
-        password_confirmation: params[:user][:password_confirmation]
-      ) && @user.role.update(
-        first_name: params[:user][:role_attributes][:first_name],
-        last_name: params[:user][:role_attributes][:last_name]
-      )
+    if @user.update(user_params) && @user.role.update(
+      first_name: params[:user][:role_attributes][:first_name],
+      last_name: params[:user][:role_attributes][:last_name]
+    )
       redirect_to patient_path(current_user.role)
     else
       redirect_to patient_edit_path(current_user)
     end
   end
+
+  # private
+  #
+  # def patient_params
+  #   params.require(:user).permit(role_attributes: [
+  #       :first_name,
+  #       :last_name
+  #     ]
+  #   )
+  # end
 
 end
