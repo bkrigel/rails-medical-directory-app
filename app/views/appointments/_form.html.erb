@@ -3,10 +3,10 @@
   <%= f.collection_select(:doctor_id, Doctor.all, :id, :doctor_with_specialty_and_location) %>
   <br>
   <br>
-  Date: <%= f.date_field(:scheduled_for, id: "scheduled_for_date") %>
+  Date: <%= f.date_field(:scheduled_for, id: "scheduled_for_date", min: Date.today) %>
   <br>
   <br>
-  Time: <%= f.time_select(:scheduled_for, id: "scheduled_for_time", ampm: true, minute_step: 15) %>
+  Time: <%= f.time_select(:scheduled_for, id: "scheduled_for_time", ampm: true, minute_step: 15, start_hour: 7, end_hour: 18) %>
   <br>
   <br>
   <%= f.label "Duration:" %>
