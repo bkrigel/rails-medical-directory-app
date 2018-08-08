@@ -1,4 +1,13 @@
 <%= form_for @appointment do |f| %>
+  <% if @appointment.errors.any? %>
+    <h3>Errors:</h3>
+    <ul class="errors">
+      <% @appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <br>
+  <% end %>
   <%= f.label "Physician:" %>
   <%= f.collection_select(:doctor_id, Doctor.all, :id, :doctor_with_specialty_and_location) %>
   <br>

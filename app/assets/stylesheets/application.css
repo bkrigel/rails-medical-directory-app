@@ -45,3 +45,9 @@ a {
 small :not(footer):not(a) {
   color: #4d4d4d;
 }
+
+.errors {
+  color: red;
+  font-style: italic;
+  font-size: 10pt;
+}

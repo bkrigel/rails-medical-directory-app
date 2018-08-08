@@ -1,4 +1,13 @@
 <%= form_for @prescription do |f| %>
+  <% if @prescription.errors.any? %>
+    <h3>Errors:</h3>
+    <ul class="errors">
+      <% @prescription.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <br>
+  <% end %>
   Drug Name: <%= f.text_field(:drug, id: "drug") %>
   <br>
   <br>

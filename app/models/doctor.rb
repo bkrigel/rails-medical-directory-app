@@ -7,6 +7,8 @@ class Doctor < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :location_city, presence: true
+  validates :years_in_practice, presence: true
+  validates :years_in_practice, numericality: true
 
   def self.for_specialty(specialty)
     all.select do |doctor|

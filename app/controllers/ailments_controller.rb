@@ -6,14 +6,11 @@ class AilmentsController < ApplicationController
   end
 
   def create
-    ailment = Ailment.new(ailment_params)
-    ailment.patient = current_user.role
-    if ailment.valid?
-      ailment.save
-      redirect_to patient_path(ailment.patient)
+    @ailment = Ailment.new(ailment_params)
+    if @ailment.save
+      redirect_to patient_path(@ailment.patient)
     else
-      flash[:alert] = "We're sorry you're not feeling well. Please let us know when you first noticed the ailment and include a brief description below."
-      redirect_to new_ailment_path
+      render :new
     end
   end
 
@@ -43,6 +40,9 @@ private
     params.require(:ailment).permit(
       :first_noticed_on,
       :description
+    )
+    .merge(
+      patient_id: current_user.role.id
     )
   end
 end

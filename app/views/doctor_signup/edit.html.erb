@@ -1,5 +1,23 @@
 <h2>Edit Personal Information</h2>
 <%= form_for(@user , url: doctor_edit_path) do |f| %>
+  <% if @user.role.errors.any? %>
+    <h3>Doctor Fields Errors:</h3>
+    <ul class="errors">
+      <% @user.role.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <br>
+  <% end %>
+  <% if @user.errors.any? %>
+    <h3>User Fields Errors:</h3>
+    <ul class="errors">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <br>
+  <% end %>
   <%= f.fields_for(:role, @user.role) do |ff| %>
     <%= ff.label "Specialty:" %>
     <%= ff.collection_select(:specialty_id, Specialty.all, :id, :name) %>

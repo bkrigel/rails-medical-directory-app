@@ -6,14 +6,11 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    appointment = Appointment.new(appointment_params)
-    appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]['scheduled_for(4i)']}:#{params[:appointment]['scheduled_for(5i)']}", "%Y-%m-%d %H:%M")
-    appointment.patient_id = current_user.role.id
-    if appointment.valid?
-      appointment.save
-      redirect_to patient_path(appointment.patient)
+    @appointment = Appointment.new(appointment_params)
+    if @appointment.save
+      redirect_to patient_path(@appointment.patient)
     else
-      redirect_to new_appointment_path
+      render :new
     end
   end
 
@@ -31,15 +28,11 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    appointment = Appointment.find_by(id: params[:id])
-    appointment.update(appointment_params)
-    appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]['scheduled_for(4i)']}:#{params[:appointment]['scheduled_for(5i)']}", "%Y-%m-%d %H:%M")
-    appointment.patient_id = current_user.role.id
-    if appointment.valid?
-      appointment.save
-      redirect_to patient_path(appointment.patient)
+    @appointment = Appointment.find_by(id: params[:id])
+    if @appointment.update(appointment_params)
+      redirect_to patient_path(@appointment.patient)
     else
-      redirect_to edit_appointment_path(appointment)
+      render :edit
     end
   end
 
@@ -61,5 +54,15 @@ private
       :doctor_id,
       :ailment_id
     )
+    .merge(
+      scheduled_for: scheduled_for,
+      patient_id: current_user.role.id
+    )
+  end
+
+  def scheduled_for
+    DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]['scheduled_for(4i)']}:#{params[:appointment]['scheduled_for(5i)']}", "%Y-%m-%d %H:%M")
+  rescue ArgumentError
+    nil
   end
 end

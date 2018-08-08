@@ -6,6 +6,7 @@ class Appointment < ApplicationRecord
   belongs_to :ailment
   validates :duration_in_minutes, presence: true
   validates :duration_in_minutes, numericality: true
+  validates :scheduled_for, presence: true
 
   has_many :prescriptions
 
