@@ -10,4 +10,8 @@ class Patient < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def sort_ailments_by_created_at
+    ailments.sort_by(&:created_at)
+  end
 end

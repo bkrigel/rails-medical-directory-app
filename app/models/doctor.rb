@@ -8,6 +8,12 @@ class Doctor < ApplicationRecord
   validates :last_name, presence: true
   validates :location_city, presence: true
 
+  def self.for_specialty(specialty)
+    all.select do |doctor|
+      doctor.specialty_id == specialty.id
+    end
+  end
+
   def doctor_with_specialty_and_location
     "Dr. #{full_name} (#{specialty.name}) - #{location_city}"
   end

@@ -7,8 +7,6 @@ class SpecialtiesController < ApplicationController
 
   def show
     @specialty = Specialty.find_by(id: params[:id])
-    @doctors = Doctor.all.select do |doctor|
-      doctor.specialty_id == @specialty.id
-    end
+    @doctors = Doctor.for_specialty(@specialty)
   end
 end

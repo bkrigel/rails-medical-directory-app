@@ -7,10 +7,8 @@ class DoctorsController < ApplicationController
 
   def show
     @doctor = Doctor.find_by(id: params[:id])
-    @patients = @doctor.patients
-    @appointments = @doctor.appointments
-    @prescriptions = Prescription.all.select do |prescription|
-      @appointments.include?(prescription.appointment)
-    end
+    @patients = @doctor.sort_alphabetically(@doctor.patients)
+    @appointments = @doctor.sort_appointments_by_time
+    @prescriptions = Prescription.for_appointments(@appointments)
   end
 end

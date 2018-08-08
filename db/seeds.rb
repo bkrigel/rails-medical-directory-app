@@ -38,20 +38,20 @@ doctor1 = Doctor.create!(first_name: "Stuart",
                          location_city: "San Jose, CA",
                          years_in_practice: 29,
                          specialty_id: 21)
-doctor2 = Doctor.create!(first_name: "Dr.",
-                         last_name: "Dre",
+doctor2 = Doctor.create!(first_name: "Andre",
+                         last_name: "Young",
                          location_city: "Compton, CA",
                          years_in_practice: 30,
                          specialty_id: 10)
-doctor3 = Doctor.create!(first_name: "James",
+doctor3 = Doctor.create!(first_name: "John",
                          last_name: "Doolittle",
                          location_city:
                          "Los Angeles, CA",
                          years_in_practice: 40,
                          specialty_id: 6)
-doctor4 = Doctor.create!(first_name: "Herbert",
-                         last_name: "Jekyl",
-                         location_city: "New York, NY",
+doctor4 = Doctor.create!(first_name: "Henry",
+                         last_name: "Jekyll",
+                         location_city: "London, UK",
                          years_in_practice: 14,
                          specialty_id: 23)
 doctor5 = Doctor.create!(first_name: "Alexander",
@@ -80,7 +80,7 @@ patient6 = Patient.create!(first_name: "Iliza",
 patient7 = Patient.create!(first_name: "Amy",
                            last_name: "Schumer")
 
-ailment1 = Ailment.create!(description: "itchy scrotum",
+ailment1 = Ailment.create!(description: "sore leg muscle",
                            first_noticed_on: Date.new(2017, 10, 14),
                            patient_id: 1)
 ailment2 = Ailment.create!(description: "the itis",
@@ -89,10 +89,10 @@ ailment2 = Ailment.create!(description: "the itis",
 ailment3 = Ailment.create!(description: "social anxiety",
                            first_noticed_on: Date.new(2017, 11, 30),
                            patient_id: 3)
-ailment4 = Ailment.create!(description: "narcotics addiction",
+ailment4 = Ailment.create!(description: "pain in my side",
                            first_noticed_on: Date.new(2018, 10, 14),
                            patient_id: 4)
-ailment5 = Ailment.create!(description: "inflamed stomach",
+ailment5 = Ailment.create!(description: "inflamed hand",
                            first_noticed_on: Date.new(2018, 6, 2),
                            patient_id: 5)
 ailment6 = Ailment.create!(description: "either measels or mumps",
@@ -104,7 +104,7 @@ ailment7 = Ailment.create!(description: "chicken pox",
 ailment8 = Ailment.create!(description: "anger management issues",
                            first_noticed_on: Date.new(2009, 9, 9),
                            patient_id: 1)
-ailment9 = Ailment.create!(description: "alcoholism",
+ailment9 = Ailment.create!(description: "asthma attacks",
                            first_noticed_on: Date.new(1993, 4, 7),
                            resolved_status: true,
                            patient_id: 1)
@@ -149,12 +149,12 @@ appointment6 = Appointment.create!(scheduled_for: DateTime.strptime("09/23/2018 
                                    patient_id: 3,
                                    ailment_id: 3)
 
-prescription1 = Prescription.create!(drug: "Zoloft",
+prescription1 = Prescription.create!(drug: "Steriod Inhaler",
                                      dosage_in_milligrams: 15,
                                      appointment_id: 1)
-prescription2 = Prescription.create!(drug: "Vyvanse",
+prescription2 = Prescription.create!(drug: "Tylenol",
                                      dosage_in_milligrams: 60,
-                                     appointment_id: 2)
+                                     appointment_id: 5)
 prescription3 = Prescription.create!(drug: "Adderall",
                                      dosage_in_milligrams: 20,
                                      appointment_id: 3)
@@ -163,4 +163,4 @@ prescription4 = Prescription.create!(drug: "Antibiotics of some sort",
                                      appointment_id: 4)
 prescription5 = Prescription.create!(drug: "BBQ Ribs",
                                      dosage_in_milligrams: 12,
-                                     appointment_id: 1)
+                                     appointment_id: 2)
