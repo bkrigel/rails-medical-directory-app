@@ -7,7 +7,7 @@
   <br>
   <br>
   <%= f.label "Appointment:" %>
-  <%= f.collection_select(:appointment, Appointment.for_current_user(current_user), :id, :date_and_patient) %>
+  <%= f.collection_select(:appointment_id, Appointment.for_current_user(current_user), :id, :date_and_patient) %>
   <br>
   <br>
   <br>

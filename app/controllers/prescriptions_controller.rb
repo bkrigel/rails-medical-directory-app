@@ -5,11 +5,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def create
-    prescription = Prescription.new(
-      drug: params[:prescription][:drug],
-      dosage_in_milligrams: params[:prescription][:dosage_in_milligrams],
-      appointment_id: params[:prescription][:appointment]
-    )
+    prescription = Prescription.new(prescription_params)
     if prescription.save
       redirect_to specialty_doctor_path(prescription.appointment.doctor.specialty,
                             prescription.appointment.doctor)
@@ -33,15 +29,11 @@ class PrescriptionsController < ApplicationController
   end
 
   def update
-    @prescription = Prescription.find_by(id: params[:id])
-    if @prescription.update(
-      drug: params[:prescription][:drug],
-      dosage_in_milligrams: params[:prescription][:dosage_in_milligrams],
-      appointment_id: params[:prescription][:appointment]
-    )
+    prescription = Prescription.find_by(id: params[:id])
+    if prescription.update(prescription_params)
       redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
     else
-      redirect_to edit_prescription_path(@prescription)
+      redirect_to edit_prescription_path(prescription)
     end
   end
 
@@ -49,6 +41,16 @@ class PrescriptionsController < ApplicationController
     @prescription = Prescription.find_by(id: params[:id])
     @prescription.destroy
     redirect_to specialty_doctor_path(current_user.role.specialty, current_user.role)
+  end
+
+  private
+
+  def prescription_params
+    params.require(:prescription).permit(
+      :drug,
+      :dosage_in_milligrams,
+      :appointment_id
+    )
   end
 
 end
