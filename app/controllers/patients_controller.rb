@@ -1,5 +1,6 @@
-class PatientsController < ApplicationController
+# frozen_string_literal: true
 
+class PatientsController < ApplicationController
   def show
     @patient = Patient.find_by(id: params[:id])
     @doctors = @patient.doctors
@@ -12,5 +13,4 @@ class PatientsController < ApplicationController
       redirect_to root_path
     end
   end
-
 end

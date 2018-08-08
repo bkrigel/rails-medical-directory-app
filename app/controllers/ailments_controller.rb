@@ -1,5 +1,6 @@
-class AilmentsController < ApplicationController
+# frozen_string_literal: true
 
+class AilmentsController < ApplicationController
   def new
     @ailment = Ailment.new
   end
@@ -34,7 +35,7 @@ class AilmentsController < ApplicationController
     redirect_to patient_path(ailment.patient)
   end
 
-  private
+private
 
   def ailment_params
     params.require(:ailment).permit(
@@ -42,5 +43,4 @@ class AilmentsController < ApplicationController
       :description
     )
   end
-
 end

@@ -1,12 +1,13 @@
-class AppointmentsController < ApplicationController
+# frozen_string_literal: true
 
+class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
   end
 
   def create
     appointment = Appointment.new(appointment_params)
-    appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]["scheduled_for(4i)"]}:#{params[:appointment]["scheduled_for(5i)"]}", "%Y-%m-%d %H:%M")
+    appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]['scheduled_for(4i)']}:#{params[:appointment]['scheduled_for(5i)']}", "%Y-%m-%d %H:%M")
     appointment.patient_id = current_user.role.id
     if appointment.save
       redirect_to patient_path(appointment.patient)
@@ -31,7 +32,7 @@ class AppointmentsController < ApplicationController
   def update
     appointment = Appointment.find_by(id: params[:id])
     appointment.update(appointment_params)
-    appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]["scheduled_for(4i)"]}:#{params[:appointment]["scheduled_for(5i)"]}", "%Y-%m-%d %H:%M")
+    appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]['scheduled_for(4i)']}:#{params[:appointment]['scheduled_for(5i)']}", "%Y-%m-%d %H:%M")
     appointment.patient_id = current_user.role.id
     if appointment.save
       redirect_to patient_path(appointment.patient)
@@ -50,7 +51,7 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  private
+private
 
   def appointment_params
     params.require(:appointment).permit(
@@ -59,5 +60,4 @@ class AppointmentsController < ApplicationController
       :ailment_id
     )
   end
-
 end

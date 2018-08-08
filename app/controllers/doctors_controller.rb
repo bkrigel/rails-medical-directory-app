@@ -1,5 +1,6 @@
-class DoctorsController < ApplicationController
+# frozen_string_literal: true
 
+class DoctorsController < ApplicationController
   def index
     @doctors = Doctor.all
   end
@@ -12,5 +13,4 @@ class DoctorsController < ApplicationController
       @appointments.include?(prescription.appointment)
     end
   end
-
 end

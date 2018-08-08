@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SpecialtiesController < ApplicationController
   def index
     @specialties = Specialty.all
@@ -7,9 +9,7 @@ class SpecialtiesController < ApplicationController
     @specialty = Specialty.find_by(id: params[:id])
     @doctors = []
     Doctor.all.select do |doctor|
-      if doctor.specialty_id == @specialty.id
-        @doctors << doctor
-      end
+      @doctors << doctor if doctor.specialty_id == @specialty.id
     end
   end
 end

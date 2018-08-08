@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PatientSignupController < ApplicationController
   def new
     @user = User.new
@@ -42,5 +44,4 @@ class PatientSignupController < ApplicationController
   #     ]
   #   )
   # end
-
 end

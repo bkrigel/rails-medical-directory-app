@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Patient < ApplicationRecord
   has_many :ailments
   has_many :appointments
@@ -6,5 +8,4 @@ class Patient < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-
 end

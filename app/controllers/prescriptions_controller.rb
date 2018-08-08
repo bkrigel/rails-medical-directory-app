@@ -1,5 +1,6 @@
-class PrescriptionsController < ApplicationController
+# frozen_string_literal: true
 
+class PrescriptionsController < ApplicationController
   def new
     @prescription = Prescription.new
   end
@@ -8,7 +9,7 @@ class PrescriptionsController < ApplicationController
     prescription = Prescription.new(prescription_params)
     if prescription.save
       redirect_to specialty_doctor_path(prescription.appointment.doctor.specialty,
-                            prescription.appointment.doctor)
+                                        prescription.appointment.doctor)
     else
       redirect_to new_prescription_path
     end
@@ -35,7 +36,7 @@ class PrescriptionsController < ApplicationController
                                       current_user.role)
   end
 
-  private
+private
 
   def prescription_params
     params.require(:prescription).permit(
@@ -44,5 +45,4 @@ class PrescriptionsController < ApplicationController
       :appointment_id
     )
   end
-
 end
