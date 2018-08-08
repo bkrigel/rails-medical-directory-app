@@ -4,7 +4,7 @@ class Ailment < ApplicationRecord
 
   def self.for_current_user(current_user)
     self.all.select do |ailment|
-      ailment.patient == current_user.role
+      ailment.patient == current_user.role && ailment.resolved_status == false
     end
   end
 

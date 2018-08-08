@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :ailments
-  resources :users
-  resources :prescriptions
-  resources :patients
-  resources :appointments
-  resources :specialties do
+  resources :ailments, only: [:new, :create, :destroy]
+  resources :prescriptions, only: [:new, :create, :edit, :update, :destroy]
+  resources :patients, only: [:show]
+  resources :appointments, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :specialties, only: [:index, :show] do
     resources :doctors, only: [:new, :create, :edit, :update, :show, :destroy]
   end
   get '/doctors_index', to: 'doctors#index', as: 'doctors'
