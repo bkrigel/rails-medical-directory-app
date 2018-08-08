@@ -5,13 +5,9 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    appointment = Appointment.new(
-      scheduled_for: DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]["scheduled_for(4i)"]}:#{params[:appointment]["scheduled_for(5i)"]}", "%Y-%m-%d %H:%M"),
-      duration_in_minutes: params[:appointment][:duration_in_minutes],
-      doctor_id: params[:appointment][:doctor],
-      ailment_id: params[:appointment][:ailment],
-      patient_id: current_user.role.id
-    )
+    appointment = Appointment.new(appointment_params)
+    appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]["scheduled_for(4i)"]}:#{params[:appointment]["scheduled_for(5i)"]}", "%Y-%m-%d %H:%M")
+    appointment.patient_id = current_user.role.id
     if appointment.save
       redirect_to patient_path(appointment.patient)
     else
@@ -33,17 +29,14 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    @appointment = Appointment.find_by(id: params[:id])
-    if @appointment.update(
-      scheduled_for: DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]["scheduled_for(4i)"]}:#{params[:appointment]["scheduled_for(5i)"]}", "%Y-%m-%d %H:%M"),
-      duration_in_minutes: params[:appointment][:duration_in_minutes],
-      doctor_id: params[:appointment][:doctor],
-      ailment_id: params[:appointment][:ailment],
-      patient_id: current_user.role.id
-    )
-      redirect_to patient_path(@appointment.patient)
+    appointment = Appointment.find_by(id: params[:id])
+    appointment.update(appointment_params)
+    appointment.scheduled_for = DateTime.strptime("#{params[:appointment][:scheduled_for]} #{params[:appointment]["scheduled_for(4i)"]}:#{params[:appointment]["scheduled_for(5i)"]}", "%Y-%m-%d %H:%M")
+    appointment.patient_id = current_user.role.id
+    if appointment.save
+      redirect_to patient_path(appointment.patient)
     else
-      redirect_to edit_appointment_path(@appointment)
+      redirect_to edit_appointment_path(appointment)
     end
   end
 
@@ -55,6 +48,16 @@ class AppointmentsController < ApplicationController
     else
       redirect_to patient_path(current_user.role)
     end
+  end
+
+  private
+
+  def appointment_params
+    params.require(:appointment).permit(
+      :duration_in_minutes,
+      :doctor_id,
+      :ailment_id
+    )
   end
 
 end

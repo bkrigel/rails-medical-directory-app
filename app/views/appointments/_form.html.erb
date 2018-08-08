@@ -1,6 +1,6 @@
 <%= form_for @appointment do |f| %>
   <%= f.label "Physician:" %>
-  <%= f.collection_select(:doctor, Doctor.all, :id, :doctor_with_specialty_and_location) %>
+  <%= f.collection_select(:doctor_id, Doctor.all, :id, :doctor_with_specialty_and_location) %>
   <br>
   <br>
   Date: <%= f.date_field(:scheduled_for, id: "scheduled_for_date") %>
@@ -13,7 +13,7 @@
   <%= f.number_field(:duration_in_minutes, id: "duration_in_minutes", step: 10, min: 30, max: 120) %> minutes
   <br>
   <br>
-  Primary Reason: <%= f.collection_select(:ailment, Ailment.for_current_user(current_user), :id, :description) %>
+  Primary Reason: <%= f.collection_select(:ailment_id, Ailment.for_current_user(current_user), :id, :description) %>
   <br>
   <br>
   <br>

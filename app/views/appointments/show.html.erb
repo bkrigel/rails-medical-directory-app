@@ -3,25 +3,25 @@
 <br>
 <ul>
   <li>
-    <b>Physician:</b> <%= link_to "Dr. #{@doctor.full_name}", specialty_doctor_path(@doctor.specialty, @doctor) %>
+    <small><i>Physician:</i></small> <%= link_to "Dr. #{@doctor.full_name}", specialty_doctor_path(@doctor.specialty, @doctor) %>
   </li>
   <li>
-    <b>Patient:</b> <%= link_to @patient.full_name, patient_path(@patient) %>
+    <small><i>Patient:</i></small> <%= link_to @patient.full_name, patient_path(@patient) %>
   </li>
   <li>
-    <b>Day:</b> <%= @appointment.scheduled_for.strftime("%A") %>
+    <small><i>Day:</i></small> <%= @appointment.scheduled_for.strftime("%A") %>
   </li>
   <li>
-    <b>Date:</b> <%= @appointment.scheduled_for.strftime("%b. %d, %Y") %>
+    <small><i>Date:</i></small> <%= @appointment.scheduled_for.strftime("%b. %d, %Y") %>
   </li>
   <li>
-    <b>Time:</b> <%= @appointment.scheduled_for.strftime("%l:%M %P") %>
+    <small><i>Time:</i></small> <%= @appointment.scheduled_for.strftime("%l:%M %P") %>
   </li>
   <li>
-    <b>Duration:</b> <%= @appointment.duration_in_minutes %> min.
+    <small><i>Duration:</i></small> <%= @appointment.duration_in_minutes %> min.
   </li>
   <li>
-    <b>Reason:</b> <%= @appointment.ailment.description %>
+    <small><i>Reason:</i></small> <%= @appointment.ailment.description %>
   </li>
 </ul>
 <%= form_tag appointment_path(@appointment), method: 'delete' do %>
