@@ -2,7 +2,7 @@
 
 class Ailment < ApplicationRecord
   belongs_to :patient
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
   validates :description, presence: true
   validates :first_noticed_on, presence: true
 

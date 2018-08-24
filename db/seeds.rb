@@ -26,7 +26,7 @@ Specialty.create!(name: "General Surgery")
 Specialty.create!(name: "Thoracic Surgery")
 Specialty.create!(name: "Urology")
 
-Doctor.create!(first_name: "Stuart",
+doctor1 = Doctor.create!(first_name: "Stuart",
                last_name: "Krigel",
                location_city: "San Jose, CA",
                years_in_practice: 29,
@@ -58,7 +58,7 @@ Doctor.create!(first_name: "Brenda",
                years_in_practice: 29,
                specialty_id: 21)
 
-Patient.create!(first_name: "William",
+patient1 = Patient.create!(first_name: "William",
                 last_name: "Burr")
 Patient.create!(first_name: "Christopher",
                 last_name: "Rock")
